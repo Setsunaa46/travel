@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Panel admin EksploreKepri untuk mengelola paket, jadwal, transportasi, pemesanan, dan pembayaran.">
+  <title>EksploreKepri — Panel Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="logo.png">
+</head>
+
+<body>
+  <!-- ============================== AUTH ============================== -->
+  <div id="auth">
+    <div class="auth-left">
+      <div class="brand">
+        <div class="brand-badge"></div>
+        <div class="brand-name">EksploreKepri</div>
+      </div>
+
+      <div class="auth-headline">
+        <h1>Panel Admin<br>Perjalanan Kepri</h1>
+        <p>Kelola paket, jadwal, transportasi, pemesanan, dan pembayaran dalam satu tempat.</p>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <!-- Login -->
+      <div class="auth-card" id="login-card">
+        <h2>Login Admin</h2>
+        <p>Masuk untuk mengakses halaman administrasi.</p>
+
+        <div class="field">
+          <label for="li-user">username</label>
+          <input id="li-user" type="text" placeholder="nama pengguna" autocomplete="username">
+        </div>
+
+        <div class="field">
+          <label for="li-pass">password</label>
+          <input id="li-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+        </div>
+
+        <div class="err" id="li-err" role="alert" aria-live="polite"></div>
+
+        <button type="button" class="btn-solid" data-action="login">Login</button>
+
+        <div class="auth-switch">
+          Belum punya akun?
+          <button type="button" class="link-btn" data-action="auth-register">Daftar di sini</button>
+        </div>
+      </div>
+
+      <!-- Registrasi -->
+      <div class="auth-card is-hidden" id="reg-card">
+        <h2>Registrasi Admin</h2>
+        <p>Buat akun admin baru.</p>
+
+        <div class="field">
+          <label for="r-nama">nama_admin</label>
+          <input id="r-nama" type="text" placeholder="Nama lengkap" autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="r-user">username</label>
+          <input id="r-user" type="text" placeholder="Buat username" autocomplete="username">
+        </div>
+
+        <div class="field">
+          <label for="r-email">email</label>
+          <input id="r-email" type="email" placeholder="nama@email.com" autocomplete="email">
+        </div>
+
+        <div class="field">
+          <label for="r-telp">no_telp</label>
+          <input id="r-telp" type="tel" placeholder="0812-xxxx-xxxx" autocomplete="tel">
+        </div>
+
+        <div class="field">
+          <label for="r-pass">password</label>
+          <input id="r-pass" type="password" placeholder="••••••••" autocomplete="new-password">
+        </div>
+
+        <button type="button" class="btn-outline" data-action="register">Daftar</button>
+
+        <div class="auth-switch">
+          Sudah punya akun?
+          <button type="button" class="link-btn" data-action="auth-login">Login di sini</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================== APP =============================== -->
+  <div id="app">
+    <div class="shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="side-brand">
+          <div class="brand-badge">E</div>
+          <div>
+            <div class="t1">EksploreKepri</div>
+            <div class="t2">Travel Admin</div>
+          </div>
+        </div>
+
+        <nav class="nav" id="nav"></nav>
+
+        <button type="button" class="logout" data-action="logout">↩ Logout</button>
+      </aside>
+
+      <div class="sidebar-overlay" id="sidebarOverlay" data-action="sidebar-close" aria-hidden="true"></div>
+
+      <main class="main">
+        <header class="topbar">
+          <button type="button" class="hamburger" data-action="sidebar-toggle" aria-label="Buka menu" aria-controls="sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </button>
+
+          <div class="search">
+            <input id="searchbox" type="search" placeholder="Cari data" aria-label="Cari data">
+          </div>
+
+          <button type="button" class="who" data-action="nav" data-id="profil" aria-label="Buka profil admin">
+            <span class="who-info">
+              <span class="name" id="who-name">nama_admin</span>
+              <span class="role">Administrator</span>
+            </span>
+            <span class="avatar" id="who-avatar">A</span>
+          </button>
+        </header>
+
+        <div class="content" id="content"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ============================== MODAL ============================== -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-overlay" data-action="modal-close"></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <h3 id="modal-title">Form</h3>
+        <button type="button" class="modal-close" data-action="modal-close" aria-label="Tutup form">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-icon" id="toast-icon" aria-hidden="true"></span>
+    <span class="toast-text" id="toast-text"></span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
